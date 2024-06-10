@@ -1,26 +1,36 @@
+<?php
+session_start();
+
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
+    echo "<p><a href='logout.php'>Выйти</a></p>";
+    echo "<p><a href='profile.php'>Личный кабинет</a></p>";
+} else {
+    echo "<p>Вы не авторизованы. Пожалуйста, <a href='login.php'>войдите</a> или <a href='register.php'>зарегистрируйтесь</a>.</p>";
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Website</title>
+    <title>Главная</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="register.php">Register</a></li>
+                <!-- <li><a href="index.php">Главная</a></li> -->
+                <!-- <li><a href="login.php">Вход</a></li> -->
+                <!-- <li><a href="register.php">Регистрация</a></li> -->
             </ul>
         </nav>
     </header>
     <main>
-        <h1>Welcome to My Website</h1>
-        <p>Please choose an option:</p>
-        <a href="login.php" class="button">Login</a>
-        <a href="register.php" class="button">Register</a>
+        <h1>Главная</h1>
+        <!-- Содержимое главной страницы -->
     </main>
     <footer>
-        <p>&copy; 2022 My Website</p>
+        <p>&copy; 2022 Мой веб-сайт</p>
     </footer>
+</body>
 </html>

@@ -1,35 +1,20 @@
 <?php
 session_start();
 
-// Проверяем, авторизован ли пользователь
-if (!isset($_SESSION["user_id"])) {
+if (!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"]) {
     header("Location: login.php");
     exit();
 }
 
-// Подключаемся к базе данных PostgreSQL
-$conn = pg_connect("host=localhost dbname=postgres user=postgres password=123");
-
-if (!$conn) {
-    die("Ошибка подключения к базе данных: " . pg_last_error());
-}
-
-// Получаем информацию о пользователе из базы данных
-$query = "SELECT first_name, email FROM employee1 WHERE id = " . $_SESSION["user_id"];
-$result = pg_query($conn, $query);
-
-if ($result && pg_num_rows($result) > 0) {
-    $row = pg_fetch_assoc($result);
-    $first_name = $row["first_name"];
-    $email = $row["email"];
+// Проверяем, не превышено ли максимальное количество попыток входа
+if (isset($_SESSION["login_attempts"]) && $_SESSION["login_attempts"] >= 3) {
+    echo "<p>Вы слишком много раз попытались войти в систему. Пожалуйста, попробуйте позже.</p>";
 } else {
-    // Пользователь не найден в базе данных
-    session_destroy();
-    header("Location: login.php");
-    exit();
+    echo "<p>Добро пожаловать, " . $_SESSION["first_name"] . "!</p>";
+    echo "<p>Вы вошли в систему как " . $_SESSION["email"] . ".</p>";
+    echo "<p><a href='logout.php'>Выйти</a></p>";
 }
 
-pg_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -43,17 +28,17 @@ pg_close($conn);
         <nav>
             <ul>
                 <li><a href="index.php">Главная</a></li>
-                <li><a href="profile.php">Личный кабинет</a></li>
-                <li><a href="logout.php">Выход</a></li>
+                <!-- <li><a href="profile.php">Личный кабинет</a></li> -->
+                <!-- <li><a href="logout.php">Выйти</a></li> -->
             </ul>
         </nav>
     </header>
     <main>
         <h1>Личный кабинет</h1>
-        <p>Привет, <?php echo $first_name; ?>!</p>
-        <p>Ваша почта: <?php echo $email; ?></p>
+        <!-- Содержимое личного кабинета -->
     </main>
     <footer>
         <p>&copy; 2022 Мой веб-сайт</p>
     </footer>
+</body>
 </html>
