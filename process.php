@@ -14,5 +14,37 @@ if(isset($_POST['save']))
 	 else{
 		echo "Error.";
 	 }
+
+
+     
+
+
+
+
+
+
+
+     if ($result) {
+
+
+        session_start();
+        $_SESSION["registered"] = true;
+
+        header("Location: login.php");
+        exit();
+    } else {
+        echo "Error: " . pg_last_error();
+    }
+
+
+
+
+  
+
+
+
+
+
+
 }
 ?>

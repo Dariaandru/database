@@ -1,6 +1,16 @@
 <?php
 session_start();
 
+if (isset($_SESSION["registered"]) && $_SESSION["registered"]) {
+    echo "<p>Вы успешно зарегистрировались. Пожалуйста, войдите в систему.</p>";
+    unset($_SESSION["registered"]);
+}
+
+
+
+
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $first_name = $_POST["first_name"];
