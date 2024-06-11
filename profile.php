@@ -36,6 +36,24 @@ if (isset($_SESSION["login_attempts"]) && $_SESSION["login_attempts"] >= 3) {
     <main>
         <h1>Личный кабинет</h1>
         <!-- Содержимое личного кабинета -->
+
+        
+
+        <form method="POST" action="add_note.php">
+    <label for="header">Заголовок заметки:</label>
+    <input type="text" id="header" name="header" required>
+
+    <label for="note">Текст заметки:</label>
+    <textarea id="note" name="note" required></textarea>
+
+    <!-- Add the hidden input field for the id -->
+    <input type="hidden" name="id" value="<?php echo $_SESSION['employee_id']; ?>">
+
+    <input type="submit" value="Добавить заметку">
+</form>
+
+<button onclick="window.location.href='notes.php'">Показать заметки</button>
+
     </main>
     <footer>
         <p>&copy; 2022 Мой веб-сайт</p>

@@ -11,6 +11,7 @@ if (isset($_SESSION["registered"]) && $_SESSION["registered"]) {
 
 
 
+// Проверка, авторизован ли пользователь
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
     header("Location: profile.php");
     exit();
@@ -20,22 +21,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $first_name = $_POST["first_name"];
 
+    // Подключение к базе данных PostgreSQL
     $conn = pg_connect("host=localhost dbname=postgres user=postgres password=123");
 
-    $query = "SELECT * FROM employee1 WHERE email = '$email' AND first_name = '$first_name'";
-    $result = pg_query($query);
+    // Получение данных пользователя из таблицы employee1
+    $query = "SELECT id FROM employee1 WHERE email = '$email' AND first_name = '$first_name'";
+    $result = pg_query($conn, $query);
 
     if (pg_num_rows($result) > 0) {
+        $user = pg_fetch_assoc($result);
+        $employeeId = $user["id"];
+
+        // Установка сессионных переменных
         $_SESSION["logged_in"] = true;
+        $_SESSION["employee_id"] = $employeeId;
         $_SESSION["email"] = $email;
         $_SESSION["first_name"] = $first_name;
+
+        // Сохранение employeeId в отдельном файле
+        $file = 'employeeId.txt';
+        file_put_contents($file, $employeeId);
+
+        // Перенаправление на страницу профиля
         header("Location: profile.php");
         exit();
     } else {
         $error_message = "Неверный логин или пароль.";
     }
-
-    pg_close($conn);
 }
 ?>
 

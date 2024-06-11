@@ -5,3 +5,13 @@ CREATE TABLE employee1 (
     city_name varchar(255),
     email varchar(255)
 );
+
+
+CREATE TABLE note (
+    id serial PRIMARY KEY,
+    employee_id integer REFERENCES employee1(id) ON DELETE CASCADE,
+    header varchar(255),
+    note text,
+    created_at timestamp
+);
+
