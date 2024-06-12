@@ -41,7 +41,7 @@ if (isset($_SESSION["login_attempts"]) && $_SESSION["login_attempts"] >= 3) {
 
         <form method="POST" action="add_note.php">
     <label for="header">Заголовок заметки:</label>
-    <input type="text" id="header" name="header" required>
+    <input type="text" id="header" maxlength="255" name="header" required >
 
     <label for="note">Текст заметки:</label>
     <textarea id="note" name="note" required></textarea>

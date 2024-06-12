@@ -1,0 +1,118 @@
+.first_name {
+    font-weight: bold;
+    color: rgb(0, 26, 255);
+    font-size: 20px;
+    background-color: rgb(132, 255, 119);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    /* text-decoration: underline; */
+
+}
+
+.note {
+    background-color: rgb(147, 222, 255);
+    font-size: 15px;
+    padding: 30px;
+    padding-top: 0;
+    border-radius: 30px;
+    max-width: 300px;
+    /* margin-bottom: 30px; */
+    position: relative;
+}
+
+.notes {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 30px;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.text {
+    font-style: italic;
+    /* text-align: center; */
+    font-size: 20px;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    width: 260px;
+    background-color:rgb(81, 206, 255);
+    padding: 10px;
+    border-radius: 10px;
+    
+
+}
+
+.body_note {
+    padding: 10px;
+    background-color: rgb(209, 243, 255);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header {
+    /* text-align: center; */
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 26, 255);
+    width: 260px;
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+.time {
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+}
+
+.body {
+    /* padding: 50px; */
+    padding-bottom: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.button {
+    background-color: rgb(132, 255, 119);
+    font-size: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 26, 255);
+    margin-bottom: 20px;
+}
+
+.buttons {
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+
+}
+
+* {
+   /* box-sizing: border-box; */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+footer {
+    background-color:rgb(132, 255, 119) ;
+    
+    margin: -8px;
+    padding: 10px 50px;
+    margin-top: 30px;
+    box-sizing: border-box;
+
+}

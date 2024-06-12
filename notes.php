@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <!-- <li><a href="index.php">Главная</a></li> -->
+                <!-- <li><a href="login.php">Вход</a></li> -->
+                <!-- <li><a href="register.php">Регистрация</a></li> -->
+                <li><a href="logout.php">Выход</a></li>
+                <li><a href="profile.php">Личный кабинет</a></li>
+            </ul>
+        </nav>
+    </header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
 <?php
 session_start();
 
@@ -12,18 +41,20 @@ $result = pg_query($db, $query);
 
 if (pg_num_rows($result) > 0) {
     echo "<h2>Заметки</h2>";
-    echo "<ul>";
+    echo "<div class='notes'>";
     while ($row = pg_fetch_assoc($result)) {
-        echo "<li>";
-        echo "<h3>" . $row['header'] . "</h3>";
-        echo "<p>" . $row['note'] . "</p>";
-        echo "<p>" . $row['created_at'] . "</p>";
-        echo "</li>";
+        echo "<div class='note'>";
+        echo "<h3 class='header'>" . $row['header'] . "</h3>";
+        echo "<p class='text'>" . $row['note'] . "</p>";
+        echo "<p class='time'>" . $row['created_at'] . "</p>";
+        echo "</div>";
     }
-    echo "</ul>";
+    echo "</div>";
 } else {
     echo "<p>У вас нет заметок.</p>";
 }
 
 pg_close($db);
 ?>
+
+
