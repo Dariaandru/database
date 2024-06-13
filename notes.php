@@ -46,7 +46,11 @@ if (pg_num_rows($result) > 0) {
         echo "<div class='note'>";
         echo "<h3 class='header'>" . $row['header'] . "</h3>";
         echo "<p class='text'>" . $row['note'] . "</p>";
-        echo "<p class='time'>" . $row['created_at'] . "</p>";
+        $createdAt = $row['created_at'];
+$dateTime = new DateTime($createdAt);
+$formattedTime = $dateTime->format("d.m.Y H:i");
+// echo $formattedTime;
+echo "<p class='time'>" . $formattedTime . "</p>";
         echo "</div>";
     }
     echo "</div>";

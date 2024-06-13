@@ -10,9 +10,14 @@ if (!isset($_SESSION["logged_in"]) || !$_SESSION["logged_in"]) {
 if (isset($_SESSION["login_attempts"]) && $_SESSION["login_attempts"] >= 3) {
     echo "<p>Вы слишком много раз попытались войти в систему. Пожалуйста, попробуйте позже.</p>";
 } else {
-    echo "<p>Добро пожаловать, " . $_SESSION["first_name"] . "!</p>";
-    echo "<p>Вы вошли в систему как " . $_SESSION["email"] . ".</p>";
-    echo "<p><a href='logout.php'>Выйти</a></p>";
+    echo "<div class='header-profile'>";
+        echo "<div class='profile'>";
+            echo "<p>Добро пожаловать, <span class='name'>" . $_SESSION["first_name"] . "</span>!</p>";
+            echo "<p>Вы вошли в систему как <span class='name'>" . $_SESSION["email"] . "</span>.</p>";
+        echo "</div>";
+        echo "<a class='button1' href='logout.php'>Выйти</a>";
+        echo "<a class='button1' href='index.php'>Главная</a>";
+    echo "</div>";
 }
 
 ?>
@@ -27,32 +32,36 @@ if (isset($_SESSION["login_attempts"]) && $_SESSION["login_attempts"] >= 3) {
     <header>
         <nav>
             <ul>
-                <li><a href="index.php">Главная</a></li>
+                <!-- <li><a href="index.php">Главная</a></li> -->
                 <!-- <li><a href="profile.php">Личный кабинет</a></li> -->
                 <!-- <li><a href="logout.php">Выйти</a></li> -->
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="main">
         <h1>Личный кабинет</h1>
         <!-- Содержимое личного кабинета -->
+         <h2>Добавить заметку</h2>
 
         
 
         <form method="POST" action="add_note.php">
     <label for="header">Заголовок заметки:</label>
-    <input type="text" id="header" maxlength="255" name="header" required >
+    <input class="input-note1" type="text" id="header" maxlength="255" name="header" required >
+    <br><br>
+    <div class="text-note">
 
-    <label for="note">Текст заметки:</label>
-    <textarea id="note" name="note" required></textarea>
+        <label for="note">Текст заметки:</label>
+        <textarea class="input-note" id="note" name="note" required></textarea>
+    </div>
 
     <!-- Add the hidden input field for the id -->
     <input type="hidden" name="id" value="<?php echo $_SESSION['employee_id']; ?>">
-
-    <input type="submit" value="Добавить заметку">
+<br><br>
+    <input  class="button1" type="submit" value="Добавить заметку">
 </form>
 
-<button onclick="window.location.href='notes.php'">Показать заметки</button>
+<button class="button1" onclick="window.location.href='notes.php'">Показать заметки</button>
 
     </main>
     <footer>

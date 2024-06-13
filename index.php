@@ -7,7 +7,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
     echo "<p><a class='button' href='profile.php'>Личный кабинет</a></p>";
     echo "</div>";
 } else {
-    echo "<p>Вы не авторизованы. Пожалуйста, <a href='login.php'>войдите</a> или <a href='register.php'>зарегистрируйтесь</a>.</p>";
+    echo "<p class='message'>Вы не авторизованы. Пожалуйста, <a href='login.php'>войдите</a> или <a href='register.php'>зарегистрируйтесь</a>.</p>";
 }
 
 // Establish a connection to the database
@@ -29,7 +29,16 @@ if (pg_num_rows($result) > 0) {
         
         echo "<p class='text'>" . $row['note'] . "</p>";
         echo "</div>";
-        echo "<p class='time'>" . $row['created_at'] . "</p>";
+
+        $createdAt = $row['created_at'];
+$dateTime = new DateTime($createdAt);
+$formattedTime = $dateTime->format("d.m.Y H:i");
+// echo $formattedTime;
+echo "<p class='time'>" . $formattedTime . "</p>";
+
+
+
+        // echo "<p class='time'>" . $row['created_at'] . "</p>";
         // echo "</li>";
         echo "</div>";
     }
