@@ -70,7 +70,7 @@
 .body {
     /* padding: 50px; */
     padding-bottom: 0;
-    min-height: 100vh;
+    min-height: calc(100vh - 20px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -86,10 +86,11 @@
     text-decoration: none;
     color: rgb(0, 26, 255);
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .buttons {
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     gap: 30px;
     justify-content: center;
@@ -123,6 +124,7 @@ footer {
     margin: -8px;
     padding: 10px 50px;
     box-sizing: border-box;
+    /* height: 30px; */
 
 }
 
@@ -163,6 +165,8 @@ line-height: 0.5;
     text-decoration: none;
     background-color: rgb(0, 26, 255);
     /* margin-bottom: 20px; */
+    cursor: pointer;
+    height: auto;
 }
 
 .main {
@@ -188,3 +192,73 @@ line-height: 0.5;
     gap: 40px;
     align-items: center;
 }
+
+
+.tools {
+    /* margin-top: 50px; */
+    margin-bottom: 50px;
+}
+
+.tools a {
+    
+    background-color: rgb(132, 255, 119);
+    color: blue;
+    font-weight: bold;
+}
+
+a {
+    color: blue;
+}
+
+input {
+    height: 30px;
+}
+
+.login {
+    margin-left: 50px;
+}
+
+.delete {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: -10px;
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: -30px;
+    width: fit-content;
+}
+
+.b-tools {
+    justify-content: left;
+}
+
+.input-reg {
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.input-reg input {
+    min-width: 250px;
+    font-size: 20px;
+}
+
+input {
+    font-size: 20px;
+}
+
+textarea {
+    font-size: 16px;
+}
+
+
+.none {
+    text-align: center;
+    font-size: 40px;
+    margin-top: calc(50vh - 60px);
+}
+

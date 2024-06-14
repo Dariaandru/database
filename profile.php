@@ -28,7 +28,7 @@ if (isset($_SESSION["login_attempts"]) && $_SESSION["login_attempts"] >= 3) {
     <title>Личный кабинет</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body class="body">
     <header>
         <nav>
             <ul>

@@ -3,8 +3,10 @@ session_start();
 
 
 if (isset($_SESSION["registered"]) && $_SESSION["registered"]) {
-    echo "<p>Вы успешно зарегистрировались. Пожалуйста, войдите в систему.</p>";
+    echo "<p class='message'>Вы успешно зарегистрировались. Пожалуйста, войдите в систему.</p>";
     unset($_SESSION["registered"]);
+} else {
+    echo "<p class='message'>Нет аккаунта? <a href='register.php'>Зарегистрируйтесь</a>.</p>";
 }
 
 
@@ -54,10 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
+   
     <title>Вход</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body class="body">
     <header>
         <nav>
             <ul>
@@ -67,7 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="login">
+        <div class="tools"><a class="button1 tools" href="index.php">Главная</a></div>
         <h1>Вход</h1>
         <?php if (isset($error_message)): ?>
             <p class="error"><?php echo $error_message; ?></p>
@@ -77,7 +81,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" name="email" id="email" required><br><br>
             <label for="first_name">First Name:</label>
             <input type="text" name="first_name" id="first_name" required><br><br>
-            <input type="submit" value="Войти">
+            <input class="button1" type="submit" value="Войти">
+
+
+
+
         </form>
     </main>
     <footer>

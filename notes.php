@@ -2,18 +2,17 @@
 <html>
 <head>
     <title>Главная</title>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <header>
         <nav>
-            <ul>
-                <!-- <li><a href="index.php">Главная</a></li> -->
-                <!-- <li><a href="login.php">Вход</a></li> -->
-                <!-- <li><a href="register.php">Регистрация</a></li> -->
-                <li><a href="logout.php">Выход</a></li>
-                <li><a href="profile.php">Личный кабинет</a></li>
-            </ul>
+            <div class="buttons">
+                <a class="button" href="index.php">Главная</a>
+                <a class="button" href="logout.php">Выход</a>
+                <a class="button" href="profile.php">Создать заметку</a>
+            </div>
         </nav>
     </header>
 
@@ -36,14 +35,15 @@ $employeeId = $_SESSION['employee_id'];
 $db = pg_connect("host=localhost dbname=postgres user=postgres password=123");
 
 // Execute a query to retrieve the notes for the employee
-$query = "SELECT header, note, created_at FROM note WHERE employee_id = $employeeId";
+$query = "SELECT id, header, note, created_at FROM note WHERE employee_id = $employeeId";
 $result = pg_query($db, $query);
 
 if (pg_num_rows($result) > 0) {
-    echo "<h2>Заметки</h2>";
+    echo "<h1 align='center'>Мои Заметки</h1>";
     echo "<div class='notes'>";
     while ($row = pg_fetch_assoc($result)) {
         echo "<div class='note'>";
+        echo "<a href='delete_note.php?id=" . $row['id'] . "' class='delete-link'>Delete</a>";
         echo "<h3 class='header'>" . $row['header'] . "</h3>";
         echo "<p class='text'>" . $row['note'] . "</p>";
         $createdAt = $row['created_at'];
@@ -55,7 +55,7 @@ echo "<p class='time'>" . $formattedTime . "</p>";
     }
     echo "</div>";
 } else {
-    echo "<p>У вас нет заметок.</p>";
+    echo "<p class='none'>У вас нет заметок.</p>";
 }
 
 pg_close($db);
