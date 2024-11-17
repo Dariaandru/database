@@ -1,6 +1,6 @@
 database.php:
 <?php
-$host        = "host = 127.0.0.1";
+$host        = "host = dariaandru.github.io";
 $port        = "port = 5432";
 $dbname      = "dbname = postgres";
 $credentials = "user = postgres password=123";
